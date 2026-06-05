@@ -80,16 +80,13 @@ export default function InstagramCarousel() {
 
   const variants = {
     enter: (dir: number) => ({
-      x: dir > 0 ? '100%' : '-100%',
-      opacity: 0
+      x: dir > 0 ? '100%' : '-100%'
     }),
     center: {
-      x: 0,
-      opacity: 1
+      x: 0
     },
     exit: (dir: number) => ({
-      x: dir < 0 ? '100%' : '-100%',
-      opacity: 0
+      x: dir < 0 ? '100%' : '-100%'
     })
   }
 
@@ -150,7 +147,7 @@ export default function InstagramCarousel() {
 
               {/* Slider Area */}
               <div className="insta-slide-area">
-                <AnimatePresence initial={false} custom={direction} mode="wait">
+                <AnimatePresence initial={false} custom={direction}>
                   <motion.div
                     key={currentIndex}
                     custom={direction}
@@ -350,6 +347,9 @@ export default function InstagramCarousel() {
           }
 
           .insta-slide-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             display: flex;
