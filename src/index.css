@@ -1362,8 +1362,8 @@ footer::after {
 /* ─── TEMAS E TRANSIÇÃO GRADUAL DE FUNDO ─── */
 
 .middle-sections-container {
-  background: var(--deep);
-  color: var(--white);
+  background-color: #FFFFFF !important;
+  color: #0D0608 !important;
   position: relative;
   z-index: 1;
   transition: background-color 0.8s ease, color 0.8s ease;
