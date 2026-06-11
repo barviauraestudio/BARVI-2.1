@@ -82,13 +82,13 @@ export default function OfficeGallery() {
                   coneSpread={20}
                   fillOpacity={0.15}
                 >
-                  <div 
+                  <div
                     className="photo-cardGroup"
                     onClick={() => setSelectedImage(photo.src)}
                     style={{ borderRadius: 'inherit', overflow: 'hidden', height: '100%', width: '100%' }}
                   >
-                    <img 
-                      src={photo.src} 
+                    <img
+                      src={photo.src}
                       alt={photo.title}
                       className="gallery-image"
                       loading="lazy"
@@ -111,26 +111,26 @@ export default function OfficeGallery() {
       {/* Lightbox Modal */}
       <AnimatePresence>
         {selectedImage && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="lightbox-overlay"
             onClick={() => setSelectedImage(null)}
           >
-            <button 
+            <button
               className="lightbox-close"
               onClick={() => setSelectedImage(null)}
               aria-label="Fechar galeria"
             >
               <X size={28} />
             </button>
-            <motion.img 
+            <motion.img
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              src={selectedImage} 
+              src={selectedImage}
               alt="Consultório ampliado"
               className="lightbox-image"
               onClick={(e) => e.stopPropagation()}
