@@ -437,23 +437,32 @@ nav.scrolled::before {
 }
 
 /* ─── MANIFESTO SECTION ─────────────────────────── */
+#quem-somos {
+  background: #fff;
+}
+#quem-somos .section-eyebrow {
+  color: rgba(139, 0, 0, 0.7);
+}
+#quem-somos .section-title {
+  color: #111;
+}
+#quem-somos .section-title em {
+  color: var(--crimson);
+}
+#quem-somos .section-rule {
+  background: var(--crimson);
+}
 .manifesto-text {
   max-width: 680px;
-  font-size: clamp(17px, 1.9vw, 22px);
-  line-height: 1.88;
+  font-size: clamp(18px, 2.2vw, 22px);
   font-weight: 300;
+  line-height: 1.85;
   color: #3a3a3a;
   text-align: center;
   margin: 0 auto;
 }
 .manifesto-text em { font-style: italic; color: var(--crimson); }
-.manifesto-text strong { font-weight: 400; color: #1a1a1a; }
-
-/* Quem somos (obsessão) overrides for white background */
-#quem-somos .section-eyebrow { color: rgba(139,0,0,0.7); }
-#quem-somos .section-title { color: #1a1a1a; }
-#quem-somos .section-title em { color: var(--crimson); }
-#quem-somos .section-rule { background: var(--crimson); }
+.manifesto-text strong { font-weight: 400; color: #111; }
 
 .manifesto-tagline {
   display: flex;
@@ -1353,36 +1362,11 @@ footer::after {
 /* ─── TEMAS E TRANSIÇÃO GRADUAL DE FUNDO ─── */
 
 .middle-sections-container {
-  background: #FFFFFF;
-  color: #0D0608;
+  background: var(--deep);
+  color: var(--white);
   position: relative;
   z-index: 1;
-}
-
-/* Fade de escuro→branco no topo do container */
-.middle-sections-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 220px;
-  background: linear-gradient(to bottom, var(--deep, #0d0608) 0%, rgba(13, 6, 8, 0) 100%);
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* Fade de branco→escuro na base do container */
-.middle-sections-container::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 220px;
-  background: linear-gradient(to top, var(--deep, #0d0608) 0%, rgba(13, 6, 8, 0) 100%);
-  z-index: 2;
-  pointer-events: none;
+  transition: background-color 0.8s ease, color 0.8s ease;
 }
 
 .theme-light {
