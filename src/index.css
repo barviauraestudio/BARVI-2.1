@@ -115,11 +115,8 @@ body.hovering #cursor-ring { width: 52px; height: 52px; border-color: rgba(212,8
 /* ─── TEMAS E TRANSIÇÃO GRADUAL DE FUNDO ─── */
 
 .middle-sections-container {
-  background-color: #FFFFFF !important;
-  color: #0D0608 !important;
   position: relative;
   z-index: 1;
-  transition: background-color 0.8s ease, color 0.8s ease;
 }
 
 .theme-light {
@@ -462,7 +459,35 @@ nav.scrolled::before {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: #FFFFFF;
+  color: #0D0608;
 }
+
+/* Hero e CTA mantêm fundo aurora (transparente) */
+#hero,
+#cta {
+  background: transparent;
+  color: var(--white);
+}
+
+/* Textos das seções brancas */
+.section .section-title { color: #111111; }
+.section .section-title em { color: var(--crimson); }
+.section .section-eyebrow { color: rgba(139,0,0,0.65); }
+.section .section-rule { background: var(--crimson); }
+
+/* Hero e CTA: restaurar cores originais */
+#hero .section-title,
+#cta .section-title,
+#hero .cta-title,
+#cta .cta-title { color: var(--white); }
+#hero .section-title em,
+#cta .section-title em,
+#hero .cta-title em,
+#cta .cta-title em { color: var(--gold); }
+#hero .section-eyebrow,
+#cta .section-eyebrow,
+#cta .cta-eyebrow { color: var(--golddm); }
 .section-header { 
   margin-bottom: 60px; 
   text-align: center; 
@@ -489,9 +514,6 @@ nav.scrolled::before {
 }
 
 /* ─── MANIFESTO SECTION ─────────────────────────── */
-#quem-somos {
-  background: #fff;
-}
 #quem-somos .section-eyebrow {
   color: rgba(139, 0, 0, 0.7);
 }
