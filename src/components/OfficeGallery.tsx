@@ -94,7 +94,7 @@ export default function OfficeGallery() {
                       loading="lazy"
                     />
                     <div className="gallery-overlay">
-                      <ZoomIn className="zoom-icon" size={24} style={{ color: '#ffffff' }} />
+                      <ZoomIn className="zoom-icon" size={24} stroke="#ffffff" />
                       <div className="overlay-text">
                         <h3>{photo.title}</h3>
                         <p>{photo.desc}</p>
@@ -207,7 +207,8 @@ export default function OfficeGallery() {
           }
 
           .zoom-icon {
-            color: #ffffff;
+            color: #ffffff !important;
+            stroke: #ffffff !important;
             position: absolute;
             top: 20px;
             right: 20px;
@@ -221,7 +222,6 @@ export default function OfficeGallery() {
 
           .photo-cardGroup:hover .zoom-icon {
             transform: scale(1.1) rotate(90deg);
-            color: #ffffff;
           }
 
           .overlay-text h3 {
