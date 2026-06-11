@@ -112,7 +112,59 @@ body.hovering #cursor { width: 16px; height: 16px; background: var(--rose); }
 body.hovering #cursor-ring { width: 52px; height: 52px; border-color: rgba(212,84,122,0.5); }
 @media(pointer:coarse){ #cursor,#cursor-ring{display:none} body{cursor:auto} }
 
-/* ─── SCROLL PROGRESS ───────────────────────────── */
+/* ─── TEMAS E TRANSIÇÃO GRADUAL DE FUNDO ─── */
+
+.middle-sections-container {
+  background-color: #FFFFFF !important;
+  color: #0D0608 !important;
+  position: relative;
+  z-index: 1;
+  transition: background-color 0.8s ease, color 0.8s ease;
+}
+
+.theme-light {
+  --deep: #FFFFFF;
+  --surface: #F9FAFB;
+  --white: #0D0608; /* Texto principal escuro */
+  --muted: #4B5563; /* Texto secundário escuro */
+  --border: #E5E7EB;
+  
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-bg-h: rgba(255, 255, 255, 0.90);
+  --glass-tint: rgba(201, 169, 110, 0.04);
+  --glass-tint-h: rgba(201, 169, 110, 0.08);
+  --glass-border: rgba(201, 169, 110, 0.22);
+  --glass-border-h: rgba(201, 169, 110, 0.45);
+  --glass-shadow: 0 4px 6px rgba(0, 0, 0, 0.03), 0 12px 40px rgba(0, 0, 0, 0.05);
+  --glass-shadow-h: 0 8px 12px rgba(0, 0, 0, 0.05), 0 28px 72px rgba(0, 0, 0, 0.08);
+
+  --glow-card-bg: rgba(255, 255, 255, 0.85);
+  
+  --gold: #A0824B; /* Dourado escurecido para legibilidade no fundo claro */
+  --goldlt: #785F32;
+  --golddm: #785F32;
+
+  --testimonial-dot-bg: rgba(0, 0, 0, 0.1);
+  --testimonial-quote-color: #785F32;
+  --testimonial-role-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Redefinições específicas para os componentes no modo claro */
+.theme-light .section-title {
+  color: var(--white);
+}
+
+.theme-light .psych-lead {
+  color: var(--white);
+}
+
+.theme-light .pillar-desc,
+.theme-light .psych-state-desc,
+.theme-light .psych-body {
+  color: var(--muted);
+}
+
+/* ─── SCROLL PROGRESS ─── */
 #scroll-progress {
   position: fixed;
   top: 0; left: 0;
@@ -1359,57 +1411,7 @@ footer::after {
   }
 }
 
-/* ─── TEMAS E TRANSIÇÃO GRADUAL DE FUNDO ─── */
 
-.middle-sections-container {
-  background-color: #FFFFFF !important;
-  color: #0D0608 !important;
-  position: relative;
-  z-index: 1;
-  transition: background-color 0.8s ease, color 0.8s ease;
-}
-
-.theme-light {
-  --deep: #FFFFFF;
-  --surface: #F9FAFB;
-  --white: #0D0608; /* Texto principal escuro */
-  --muted: #4B5563; /* Texto secundário escuro */
-  --border: #E5E7EB;
-  
-  --glass-bg: rgba(255, 255, 255, 0.75);
-  --glass-bg-h: rgba(255, 255, 255, 0.90);
-  --glass-tint: rgba(201, 169, 110, 0.04);
-  --glass-tint-h: rgba(201, 169, 110, 0.08);
-  --glass-border: rgba(201, 169, 110, 0.22);
-  --glass-border-h: rgba(201, 169, 110, 0.45);
-  --glass-shadow: 0 4px 6px rgba(0, 0, 0, 0.03), 0 12px 40px rgba(0, 0, 0, 0.05);
-  --glass-shadow-h: 0 8px 12px rgba(0, 0, 0, 0.05), 0 28px 72px rgba(0, 0, 0, 0.08);
-
-  --glow-card-bg: rgba(255, 255, 255, 0.85);
-  
-  --gold: #A0824B; /* Dourado escurecido para legibilidade no fundo claro */
-  --goldlt: #785F32;
-  --golddm: #785F32;
-
-  --testimonial-dot-bg: rgba(0, 0, 0, 0.1);
-  --testimonial-quote-color: #785F32;
-  --testimonial-role-color: rgba(0, 0, 0, 0.6);
-}
-
-/* Redefinições específicas para os componentes no modo claro */
-.theme-light .section-title {
-  color: var(--white);
-}
-
-.theme-light .psych-lead {
-  color: var(--white);
-}
-
-.theme-light .pillar-desc,
-.theme-light .psych-state-desc,
-.theme-light .psych-body {
-  color: var(--muted);
-}
 
 /* Ajustes finos nos Swatches da Paleta de Cores */
 .theme-light .color-swatch:hover {
