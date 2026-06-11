@@ -117,6 +117,8 @@ body.hovering #cursor-ring { width: 52px; height: 52px; border-color: rgba(212,8
 .middle-sections-container {
   position: relative;
   z-index: 1;
+  background: #FFFFFF !important;
+  isolation: isolate;
 }
 
 .theme-light {
@@ -173,7 +175,8 @@ body.hovering #cursor-ring { width: 52px; height: 52px; border-color: rgba(212,8
 }
 
 /* ─── BACKGROUND ────────────────────────────────── */
-body::before {
+/* body::before removido — SoftAurora React component assume este papel */
+/* body::before {
   content: '';
   position: fixed; inset: 0; z-index: -2;
   background:
@@ -181,7 +184,7 @@ body::before {
     radial-gradient(ellipse 70% 75% at 88% 82%, rgba(110,0,20,0.5) 0%, transparent 52%),
     radial-gradient(ellipse 55% 55% at 50% 48%, rgba(30,0,8,0.75) 0%, transparent 65%),
     linear-gradient(155deg, #090204 0%, #130009 45%, #070002 100%);
-}
+} */
 
 
 /* ─── CENTER WRAPPER ────────────────────────────── */
@@ -461,6 +464,11 @@ nav.scrolled::before {
   justify-content: center;
   background: #FFFFFF;
   color: #0D0608;
+}
+
+/* Garantir opacidade total dentro do container branco */
+.middle-sections-container .section {
+  background: #FFFFFF !important;
 }
 
 /* Hero e CTA mantêm fundo aurora (transparente) */
