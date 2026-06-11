@@ -115,10 +115,11 @@ body.hovering #cursor-ring { width: 52px; height: 52px; border-color: rgba(212,8
 /* ─── TEMAS E TRANSIÇÃO GRADUAL DE FUNDO ─── */
 
 .middle-sections-container {
+  background-color: #FFFFFF !important;
+  color: #0D0608 !important;
   position: relative;
   z-index: 1;
-  background: #FFFFFF !important;
-  isolation: isolate;
+  transition: background-color 0.8s ease, color 0.8s ease;
 }
 
 .theme-light {
@@ -127,6 +128,20 @@ body.hovering #cursor-ring { width: 52px; height: 52px; border-color: rgba(212,8
   --white: #0D0608; /* Texto principal escuro */
   --muted: #4B5563; /* Texto secundário escuro */
   --border: #E5E7EB;
+
+/* Force dark text on middle sections */
+#middle-sections .section-title { color: #111 !important; }
+#middle-sections .section-eyebrow { color: rgba(139, 0, 0, 0.8) !important; }
+#middle-sections p { color: #333; }
+#middle-sections .pillar-title { color: #111 !important; }
+#middle-sections .pillar-desc { color: #444 !important; }
+#middle-sections .pillar-kicker { color: #111 !important; }
+#middle-sections .psych-lead { color: #111 !important; }
+#middle-sections .psych-state-title { color: #111 !important; }
+#middle-sections .psych-state-desc { color: #444 !important; }
+#middle-sections .testimonial-quote { color: #111 !important; }
+#middle-sections .testimonial-author { color: #333 !important; }
+#middle-sections .testimonial-role { color: #555 !important; }
   
   --glass-bg: rgba(255, 255, 255, 0.75);
   --glass-bg-h: rgba(255, 255, 255, 0.90);
@@ -175,8 +190,7 @@ body.hovering #cursor-ring { width: 52px; height: 52px; border-color: rgba(212,8
 }
 
 /* ─── BACKGROUND ────────────────────────────────── */
-/* body::before removido — SoftAurora React component assume este papel */
-/* body::before {
+body::before {
   content: '';
   position: fixed; inset: 0; z-index: -2;
   background:
@@ -184,7 +198,7 @@ body.hovering #cursor-ring { width: 52px; height: 52px; border-color: rgba(212,8
     radial-gradient(ellipse 70% 75% at 88% 82%, rgba(110,0,20,0.5) 0%, transparent 52%),
     radial-gradient(ellipse 55% 55% at 50% 48%, rgba(30,0,8,0.75) 0%, transparent 65%),
     linear-gradient(155deg, #090204 0%, #130009 45%, #070002 100%);
-} */
+}
 
 
 /* ─── CENTER WRAPPER ────────────────────────────── */
@@ -462,40 +476,7 @@ nav.scrolled::before {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #FFFFFF;
-  color: #0D0608;
 }
-
-/* Garantir opacidade total dentro do container branco */
-.middle-sections-container .section {
-  background: #FFFFFF !important;
-}
-
-/* Hero e CTA mantêm fundo aurora (transparente) */
-#hero,
-#cta {
-  background: transparent;
-  color: var(--white);
-}
-
-/* Textos das seções brancas */
-.section .section-title { color: #111111; }
-.section .section-title em { color: var(--crimson); }
-.section .section-eyebrow { color: rgba(139,0,0,0.65); }
-.section .section-rule { background: var(--crimson); }
-
-/* Hero e CTA: restaurar cores originais */
-#hero .section-title,
-#cta .section-title,
-#hero .cta-title,
-#cta .cta-title { color: var(--white); }
-#hero .section-title em,
-#cta .section-title em,
-#hero .cta-title em,
-#cta .cta-title em { color: var(--gold); }
-#hero .section-eyebrow,
-#cta .section-eyebrow,
-#cta .cta-eyebrow { color: var(--golddm); }
 .section-header { 
   margin-bottom: 60px; 
   text-align: center; 
@@ -522,6 +503,9 @@ nav.scrolled::before {
 }
 
 /* ─── MANIFESTO SECTION ─────────────────────────── */
+#quem-somos {
+  background: #fff;
+}
 #quem-somos .section-eyebrow {
   color: rgba(139, 0, 0, 0.7);
 }
