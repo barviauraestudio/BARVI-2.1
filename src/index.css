@@ -438,18 +438,22 @@ nav.scrolled::before {
 
 /* ─── MANIFESTO SECTION ─────────────────────────── */
 .manifesto-text {
-  max-width: 800px;
-  font-family: var(--FB);
+  max-width: 680px;
+  font-size: clamp(17px, 1.9vw, 22px);
+  line-height: 1.88;
   font-weight: 300;
-  font-size: clamp(18px, 2.2vw, 26px);
-  line-height: 1.7;
-  letter-spacing: 0.02em;
-  color: var(--white);
+  color: #3a3a3a;
   text-align: center;
   margin: 0 auto;
 }
-.manifesto-text em { font-style: italic; color: var(--gold); }
-.manifesto-text strong { font-weight: 400; color: var(--goldlt); }
+.manifesto-text em { font-style: italic; color: var(--crimson); }
+.manifesto-text strong { font-weight: 400; color: #1a1a1a; }
+
+/* Quem somos (obsessão) overrides for white background */
+#quem-somos .section-eyebrow { color: rgba(139,0,0,0.7); }
+#quem-somos .section-title { color: #1a1a1a; }
+#quem-somos .section-title em { color: var(--crimson); }
+#quem-somos .section-rule { background: var(--crimson); }
 
 .manifesto-tagline {
   display: flex;
@@ -1344,4 +1348,191 @@ footer::after {
   html {
     @apply font-sans;
   }
+}
+
+/* ─── TEMAS E TRANSIÇÃO GRADUAL DE FUNDO ─── */
+
+.middle-sections-container {
+  background: #FFFFFF;
+  color: #0D0608;
+  position: relative;
+  z-index: 1;
+}
+
+/* Fade de escuro→branco no topo do container */
+.middle-sections-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 220px;
+  background: linear-gradient(to bottom, var(--deep, #0d0608) 0%, rgba(13, 6, 8, 0) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Fade de branco→escuro na base do container */
+.middle-sections-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 220px;
+  background: linear-gradient(to top, var(--deep, #0d0608) 0%, rgba(13, 6, 8, 0) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.theme-light {
+  --deep: #FFFFFF;
+  --surface: #F9FAFB;
+  --white: #0D0608; /* Texto principal escuro */
+  --muted: #4B5563; /* Texto secundário escuro */
+  --border: #E5E7EB;
+  
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-bg-h: rgba(255, 255, 255, 0.90);
+  --glass-tint: rgba(201, 169, 110, 0.04);
+  --glass-tint-h: rgba(201, 169, 110, 0.08);
+  --glass-border: rgba(201, 169, 110, 0.22);
+  --glass-border-h: rgba(201, 169, 110, 0.45);
+  --glass-shadow: 0 4px 6px rgba(0, 0, 0, 0.03), 0 12px 40px rgba(0, 0, 0, 0.05);
+  --glass-shadow-h: 0 8px 12px rgba(0, 0, 0, 0.05), 0 28px 72px rgba(0, 0, 0, 0.08);
+
+  --glow-card-bg: rgba(255, 255, 255, 0.85);
+  
+  --gold: #A0824B; /* Dourado escurecido para legibilidade no fundo claro */
+  --goldlt: #785F32;
+  --golddm: #785F32;
+
+  --testimonial-dot-bg: rgba(0, 0, 0, 0.1);
+  --testimonial-quote-color: #785F32;
+  --testimonial-role-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Redefinições específicas para os componentes no modo claro */
+.theme-light .section-title {
+  color: var(--white);
+}
+
+.theme-light .psych-lead {
+  color: var(--white);
+}
+
+.theme-light .pillar-desc,
+.theme-light .psych-state-desc,
+.theme-light .psych-body {
+  color: var(--muted);
+}
+
+/* Ajustes finos nos Swatches da Paleta de Cores */
+.theme-light .color-swatch:hover {
+  transform: translateY(-6px);
+}
+.theme-light .swatch-block {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+.theme-light .swatch-meaning {
+  color: var(--muted);
+}
+
+/* Customização do Carrossel do Instagram em modo claro */
+.theme-light .instagram-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(201, 169, 110, 0.25);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.08), var(--glass-inset);
+}
+.theme-light .insta-header {
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+.theme-light .insta-username {
+  color: #0A0A0A;
+}
+.theme-light .insta-location {
+  color: rgba(0, 0, 0, 0.45);
+}
+.theme-light .insta-dots span {
+  background: #0A0A0A;
+}
+.theme-light .insta-likes {
+  color: #0A0A0A;
+}
+.theme-light .insta-caption {
+  color: rgba(0, 0, 0, 0.85);
+}
+.theme-light .insta-caption strong {
+  color: #0A0A0A;
+}
+.theme-light .insta-btn svg {
+  stroke: #0D0608;
+}
+.theme-light .indicator-dot {
+  background: rgba(0, 0, 0, 0.15);
+}
+.theme-light .indicator-dot.active {
+  background: var(--gold);
+}
+.theme-light .insta-time {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* Customização dos depoimentos (Testimonials) */
+.testimonial-card-inner {
+  height: 100%;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  background: rgba(10, 3, 5, 0.5);
+  backdrop-filter: blur(32px);
+  border: 1px solid rgba(201, 169, 110, 0.15);
+  border-radius: 24px;
+  padding: clamp(24px, 5vw, 40px);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.05);
+  transition: background-color 0.8s ease, border-color 0.8s ease, box-shadow 0.8s ease;
+}
+
+.theme-light .testimonial-card-inner {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(201, 169, 110, 0.25);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.06);
+}
+
+/* Customização dos parceiros (Partners) */
+.theme-light .partner-marquee-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(201, 169, 110, 0.25);
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.6),
+    0 10px 30px rgba(0,0,0,0.04);
+}
+
+.theme-light .partner-marquee-card:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: var(--gold);
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    0 15px 35px rgba(201, 169, 110, 0.1),
+    0 4px 15px rgba(0,0,0,0.05);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.theme-light .partner-card-name {
+  color: #0A0A0A;
+}
+
+.theme-light .partner-marquee-card:hover .partner-card-name {
+  color: var(--goldlt);
+}
+
+.theme-light .partner-card-role {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Suavizar links normais da navegação ao passar por cima */
+.theme-light a {
+  transition: color 0.3s ease;
 }
