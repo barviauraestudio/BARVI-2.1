@@ -175,7 +175,11 @@ function App() {
       <Manifesto />
       
       {/* Middle Sections with White Background & Light Theme */}
-      <div className="middle-sections-container theme-light">
+      <div 
+        id="middle-sections"
+        className="middle-sections-container theme-light"
+        style={{ backgroundColor: '#FFFFFF', color: '#111111', position: 'relative', zIndex: 10 }}
+      >
         <Minimalism />
         <Pillars />
         <OfficeGallery />
