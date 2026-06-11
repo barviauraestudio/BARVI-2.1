@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useCallback } from 'react'
 import CenterWrapper from './CenterWrapper'
 
 const LETTERS = 'MINIMALISMO'.split('')
@@ -11,28 +11,7 @@ export default function Minimalism() {
   const phraseRef = useRef<HTMLParagraphElement>(null)
   const animatedRef = useRef(false)
 
-  useEffect(() => {
-    const section = sectionRef.current
-    if (!section) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !animatedRef.current) {
-          animatedRef.current = true
-          animateText()
-        }
-      },
-      { threshold: 0.15 }
-    )
-
-    observer.observe(section)
-
-    return () => {
-      observer.disconnect()
-    }
-  }, [])
-
-  function animateText() {
+  const animateText = useCallback(() => {
     lettersRef.current.forEach((el, i) => {
       if (!el) return
       setTimeout(() => {
@@ -63,16 +42,37 @@ export default function Minimalism() {
         textRef.current.style.transform = 'translateY(0)'
       }
     }, 5000)
-  }
+  }, [])
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !animatedRef.current) {
+          animatedRef.current = true
+          animateText()
+        }
+      },
+      { threshold: 0.15 }
+    )
+
+    observer.observe(section)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [animateText])
 
   return (
     <section
       ref={sectionRef}
       id="minimalismo"
-      className="section"
       style={{
         padding: '140px 0 120px',
-        background: '#FFFFFF',
+        position: 'relative',
+        overflow: 'hidden',
         textAlign: 'center',
       }}
     >
@@ -92,7 +92,7 @@ export default function Minimalism() {
                   fontFamily: 'var(--FD)', fontStyle: 'italic', fontWeight: 300,
                   fontSize: 'clamp(42px, 7vw, 110px)', lineHeight: 0.9,
                   letterSpacing: '-0.02em',
-                  color: i === 0 ? 'var(--gold)' : 'var(--white)',
+                  color: i === 0 ? 'var(--gold)' : '#111111',
                   opacity: 0, transform: 'translateY(40px)', filter: 'blur(8px)',
                   transition: 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.22,1,0.36,1), filter 0.6s ease',
                   display: 'inline-block',
