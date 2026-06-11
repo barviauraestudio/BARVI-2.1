@@ -72,7 +72,7 @@ export default function OfficeGallery() {
               <FadeContent key={i} duration={800} delay={i * 150} blur className={`gallery-item-wrap ${photo.aspect}`}>
                 <BorderGlow
                   className="gallery-item"
-                  backgroundColor="rgba(10, 3, 5, 0.45)"
+                  backgroundColor="var(--glow-card-bg, rgba(10, 3, 5, 0.45))"
                   borderRadius={16}
                   glowColor="36 65 65"
                   colors={['#C9A96E', '#8B0000', '#A8883A']}
@@ -94,7 +94,7 @@ export default function OfficeGallery() {
                       loading="lazy"
                     />
                     <div className="gallery-overlay">
-                      <ZoomIn className="zoom-icon" size={24} />
+                      <ZoomIn className="zoom-icon" size={24} style={{ color: '#ffffff' }} />
                       <div className="overlay-text">
                         <h3>{photo.title}</h3>
                         <p>{photo.desc}</p>
@@ -207,7 +207,7 @@ export default function OfficeGallery() {
           }
 
           .zoom-icon {
-            color: var(--gold);
+            color: #ffffff;
             position: absolute;
             top: 20px;
             right: 20px;
@@ -216,12 +216,12 @@ export default function OfficeGallery() {
             border-radius: 50%;
             border: 1px solid rgba(201, 169, 110, 0.2);
             box-sizing: content-box;
-            transition: transform 0.4s ease, color 0.3s;
+            transition: transform 0.4s ease;
           }
 
           .photo-cardGroup:hover .zoom-icon {
             transform: scale(1.1) rotate(90deg);
-            color: var(--white);
+            color: #ffffff;
           }
 
           .overlay-text h3 {
