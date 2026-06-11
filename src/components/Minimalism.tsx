@@ -69,10 +69,10 @@ export default function Minimalism() {
     <section
       ref={sectionRef}
       id="minimalismo"
+      className="section"
       style={{
         padding: '140px 0 120px',
-        position: 'relative',
-        overflow: 'hidden',
+        background: '#FFFFFF',
         textAlign: 'center',
       }}
     >
