@@ -174,14 +174,14 @@ export default function InstagramCarousel() {
                   onClick={handlePrev}
                   aria-label="Slide anterior"
                 >
-                  <ChevronLeft size={20} style={{ color: '#ffffff' }} />
+                  <ChevronLeft size={20} stroke="#ffffff" />
                 </button>
                 <button
                   className="slide-nav-btn next"
                   onClick={handleNext}
                   aria-label="Próximo slide"
                 >
-                  <ChevronRight size={20} style={{ color: '#ffffff' }} />
+                  <ChevronRight size={20} stroke="#ffffff" />
                 </button>
 
                 {/* Slide Count Indicator (Top Right) */}
@@ -500,7 +500,7 @@ export default function InstagramCarousel() {
             background: rgba(20, 5, 10, 0.6);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(201,169,110,0.25);
-            color: var(--white);
+            color: #ffffff !important;
             border-radius: 50%;
             width: 32px;
             height: 32px;
@@ -512,10 +512,18 @@ export default function InstagramCarousel() {
             z-index: 10;
           }
 
+          .slide-nav-btn svg {
+            stroke: #ffffff !important;
+            color: #ffffff !important;
+          }
+
           .slide-nav-btn:hover {
             background: rgba(201, 169, 110, 0.25);
             border-color: var(--gold);
-            color: var(--goldlt);
+          }
+
+          .slide-nav-btn:hover svg {
+            stroke: var(--goldlt) !important;
           }
 
           .slide-nav-btn.prev { left: 12px; }
