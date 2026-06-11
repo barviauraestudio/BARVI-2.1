@@ -174,14 +174,14 @@ export default function InstagramCarousel() {
                   onClick={handlePrev}
                   aria-label="Slide anterior"
                 >
-                  <ChevronLeft size={20} />
+                  <ChevronLeft size={20} style={{ color: '#ffffff' }} />
                 </button>
                 <button
                   className="slide-nav-btn next"
                   onClick={handleNext}
                   aria-label="Próximo slide"
                 >
-                  <ChevronRight size={20} />
+                  <ChevronRight size={20} style={{ color: '#ffffff' }} />
                 </button>
 
                 {/* Slide Count Indicator (Top Right) */}
