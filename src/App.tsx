@@ -105,6 +105,21 @@ function App() {
   useBlurSiblings(".manifesto-tagline", ".manifesto-pill");
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isAuroraVisible, setIsAuroraVisible] = useState(true);
+
+  useEffect(() => {
+    function handleScroll() {
+      const scrollY = window.scrollY;
+      const winHeight = window.innerHeight;
+      const nearTop = scrollY < winHeight * 1.6;
+      setIsAuroraVisible(nearTop);
+    }
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   function toggleMenu() {
     setMenuOpen(prev => {
@@ -137,23 +152,40 @@ function App() {
           colorSpeed={1}
           enableMouseInteraction
           mouseInfluence={0.25}
+          visible={isAuroraVisible}
         />
       </div>
       {/* Película suavizada para dar mais vida à aurora */}
-      <div style={{ position: 'fixed', inset: 0, zIndex: -1, background: 'rgba(6,2,4,0.30)', pointerEvents: 'none' }} />
+      <div 
+        style={{ 
+          position: 'fixed', 
+          inset: 0, 
+          zIndex: -1, 
+          background: 'rgba(6,2,4,0.30)', 
+          pointerEvents: 'none',
+          opacity: isAuroraVisible ? 1 : 0,
+          transition: 'opacity 0.8s ease'
+        }} 
+      />
       <ScrollProgress />
       <MobileMenu open={menuOpen} onClose={closeMenu} />
       <Nav menuOpen={menuOpen} onToggle={toggleMenu} />
+      
       <Hero />
       <Manifesto />
-      <Minimalism />
-      <Pillars />
-      <OfficeGallery />
-      <Psychology />
-      <InstagramCarousel />
-      <Palette />
-      <Partners />
-      <Testimonials />
+      
+      {/* Middle Sections with White Background & Light Theme */}
+      <div className="middle-sections-container theme-light">
+        <Minimalism />
+        <Pillars />
+        <OfficeGallery />
+        <Psychology />
+        <InstagramCarousel />
+        <Palette />
+        <Partners />
+        <Testimonials />
+      </div>
+      
       <CTA />
       <Footer />
       <AudioPlayer src="/SITE-AURA-AUDIO.MP3" />
