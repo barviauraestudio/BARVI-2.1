@@ -18,6 +18,7 @@ interface SoftAuroraProps {
   colorSpeed?: number;
   enableMouseInteraction?: boolean;
   mouseInfluence?: number;
+  visible?: boolean;
 }
 
 function hexToVec3(hex: string): [number, number, number] {
@@ -180,9 +181,15 @@ export default function SoftAurora({
   layerOffset = 0,
   colorSpeed = 1.0,
   enableMouseInteraction = true,
-  mouseInfluence = 0.25
+  mouseInfluence = 0.25,
+  visible = true
 }: SoftAuroraProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const visibleRef = useRef(visible);
+
+  useEffect(() => {
+    visibleRef.current = visible;
+  }, [visible]);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -191,8 +198,7 @@ export default function SoftAurora({
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
 
-    let program: Program;
-    let currentMouse = [0.5, 0.5];
+    const currentMouse = [0.5, 0.5];
     let targetMouse = [0.5, 0.5];
 
     function handleMouseMove(e: MouseEvent) {
@@ -207,19 +213,8 @@ export default function SoftAurora({
       targetMouse = [0.5, 0.5];
     }
 
-    function resize() {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      renderer.setSize(w, h);
-      if (program) {
-        program.uniforms.uResolution.value = [gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height];
-      }
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
     const geometry = new Triangle(gl);
-    program = new Program(gl, {
+    const program = new Program(gl, {
       vertex: vertexShader,
       fragment: fragmentShader,
       uniforms: {
@@ -243,6 +238,15 @@ export default function SoftAurora({
       }
     });
 
+    function resize() {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      renderer.setSize(w, h);
+      program.uniforms.uResolution.value = [gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height];
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
     const mesh = new Mesh(gl, { geometry, program });
     container.appendChild(gl.canvas);
 
@@ -255,6 +259,7 @@ export default function SoftAurora({
 
     function update(time: number) {
       animationFrameId = requestAnimationFrame(update);
+      if (!visibleRef.current) return;
       program.uniforms.uTime.value = time * 0.001;
 
       if (enableMouseInteraction) {
@@ -283,5 +288,15 @@ export default function SoftAurora({
     };
   }, [speed, scale, brightness, color1, color2, noiseFrequency, noiseAmplitude, bandHeight, bandSpread, octaveDecay, layerOffset, colorSpeed, enableMouseInteraction, mouseInfluence]);
 
-  return <div ref={containerRef} className="soft-aurora-container" />;
+  return (
+    <div
+      ref={containerRef}
+      className="soft-aurora-container"
+      style={{
+        opacity: visible ? 1 : 0,
+        pointerEvents: visible ? 'auto' : 'none',
+        transition: 'opacity 0.8s ease',
+      }}
+    />
+  );
 }

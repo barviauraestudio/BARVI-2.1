@@ -2,7 +2,7 @@
 import React from 'react';
 import type { ComponentProps, ReactNode } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { Frame, Link } from 'lucide-react'; // ← Apenas ícones que existem
+import { Frame } from 'lucide-react'; // ← Apenas ícones que existem
 
 interface FooterLink {
 	title: string;

@@ -35,5 +35,5 @@ export function useBlurSiblings(gridSelector: string, cardSelector: string) {
         }
       }, { passive: true })
     })
-  }, [])
+  }, [gridSelector, cardSelector])
 }

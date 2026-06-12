@@ -60,7 +60,7 @@ export default function Psychology() {
                 <FadeContent key={i} duration={600} delay={i * 100} blur className="h-full">
                   <BorderGlow
                     className="psych-state h-full"
-                    backgroundColor="rgba(8,2,5,0.6)"
+                    backgroundColor="var(--glow-card-bg, rgba(8,2,5,0.6))"
                     borderRadius={12}
                     glowColor="36 65 65"
                     colors={['#C9A96E', '#8B0000', '#A8883A']}
@@ -105,7 +105,7 @@ export default function Psychology() {
             <FadeContent duration={800} delay={100} blur className="h-full">
               <BorderGlow
                 className="h-full w-full overflow-hidden"
-                backgroundColor="rgba(10,3,5,0.4)"
+                backgroundColor="var(--glow-card-bg, rgba(10,3,5,0.4))"
                 borderRadius={16}
                 glowColor="36 65 65"
                 colors={['#C9A96E', '#8B0000', '#A8883A']}
@@ -125,7 +125,7 @@ export default function Psychology() {
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10, 3, 5, 0.85) 0%, rgba(10, 3, 5, 0.1) 60%, transparent 100%)', pointerEvents: 'none' }} />
                   <div style={{ position: 'absolute', bottom: 24, left: 24, right: 24, textAlign: 'left' }}>
                     <p style={{ fontFamily: 'var(--FB)', fontSize: 9, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 4 }}>Rigor Clínico</p>
-                    <p style={{ fontFamily: 'var(--FD)', fontStyle: 'italic', fontSize: 18, color: 'var(--white)', fontWeight: 300, margin: 0 }}>"A excelência está nos detalhes invisíveis."</p>
+                    <p style={{ fontFamily: 'var(--FD)', fontStyle: 'italic', fontSize: 18, color: '#F2EDE6', fontWeight: 300, margin: 0 }}>"A excelência está nos detalhes invisíveis."</p>
                   </div>
                 </div>
               </BorderGlow>

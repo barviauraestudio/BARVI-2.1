@@ -36,9 +36,6 @@ export default function Partners() {
         minHeight: 'auto'
       }}
     >
-      {/* Background Glow behind the scroll */}
-      <div className="partners-glow" />
-
       <CenterWrapper>
         <Reveal className="section-header" style={{ marginBottom: 50 }}>
           <p className="section-eyebrow">PRODUÇÕES E PARCEIROS</p>
@@ -64,18 +61,6 @@ export default function Partners() {
 
       <style dangerouslySetInnerHTML={{
         __html: `
-          .partners-glow {
-            position: absolute;
-            top: 55%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70vw;
-            height: 300px;
-            background: radial-gradient(circle at center, rgba(139, 0, 0, 0.22) 0%, rgba(201, 169, 110, 0.04) 50%, transparent 80%);
-            filter: blur(60px);
-            z-index: -1;
-            pointer-events: none;
-          }
 
           .partners-marquee-container {
             position: relative;

@@ -43,7 +43,7 @@ export default function Pillars() {
               <FadeContent duration={700} delay={i * 120} blur className="h-full">
                 <BorderGlow
                   className="pillar-card h-full"
-                  backgroundColor="rgba(10,3,5,0.7)"
+                  backgroundColor="var(--glow-card-bg, rgba(10,3,5,0.7))"
                   borderRadius={12}
                   glowColor="36 65 65"
                   colors={['#C9A96E', '#8B0000', '#A8883A']}

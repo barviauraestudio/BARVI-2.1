@@ -4,7 +4,7 @@ import FadeContent from './FadeContent'
 
 export default function Manifesto() {
   return (
-    <section id="quem-somos" className="section" style={{ background: '#ffffff', color: '#1a1a1a' }}>
+    <section id="quem-somos" className="section">
 
       <CenterWrapper>
         <Reveal className="section-header">

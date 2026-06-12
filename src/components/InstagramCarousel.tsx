@@ -1,11 +1,8 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Reveal from './Reveal'
 import CenterWrapper from './CenterWrapper'
 import { Heart, MessageCircle, Send, Bookmark, ChevronLeft, ChevronRight } from 'lucide-react'
-
-// Curated stock image for slide 4 (Premium medical/dental clinic detail)
-const STOCK_CLINIC_IMG = 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=600&auto=format&fit=crop'
 
 export default function InstagramCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -13,8 +10,6 @@ export default function InstagramCarousel() {
   const [bookmarked, setBookmarked] = useState(false)
   const [direction, setDirection] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
-
-  const slideWidth = 500 // Max width of the instagram mockup
 
   const slides = [
     {
@@ -51,15 +46,15 @@ export default function InstagramCarousel() {
 
   const totalSlides = slides.length
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setDirection(1)
     setCurrentIndex((prev) => (prev + 1) % totalSlides)
-  }
+  }, [totalSlides])
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setDirection(-1)
     setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides)
-  }
+  }, [totalSlides])
 
   // Handle keyboard arrow navigation when hovering the component
   useEffect(() => {
@@ -76,7 +71,7 @@ export default function InstagramCarousel() {
         container.removeEventListener('keydown', handleKeyDown)
       }
     }
-  }, [])
+  }, [handleNext, handlePrev])
 
   const variants = {
     enter: (dir: number) => ({

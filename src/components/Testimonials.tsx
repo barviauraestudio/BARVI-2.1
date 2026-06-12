@@ -111,7 +111,7 @@ export default function Testimonials() {
                       borderRadius: '2px',
                       transition: 'all 0.4s ease',
                       width: activeIndex === index ? '40px' : '12px',
-                      background: activeIndex === index ? 'var(--gold)' : 'rgba(255,255,255,0.1)',
+                      background: activeIndex === index ? 'var(--gold)' : 'var(--testimonial-dot-bg, rgba(255,255,255,0.1))',
                       border: 'none',
                       cursor: 'pointer'
                     }}
@@ -133,20 +133,7 @@ export default function Testimonials() {
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 className="absolute inset-0"
               >
-                <div style={{
-                  height: '100%',
-                  width: '100%',
-                  maxWidth: '500px',
-                  margin: '0 auto',
-                  background: 'rgba(10, 3, 5, 0.5)',
-                  backdropFilter: 'blur(32px)',
-                  border: '1px solid rgba(201, 169, 110, 0.15)',
-                  borderRadius: '24px',
-                  padding: 'clamp(24px, 5vw, 40px)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  boxShadow: '0 24px 48px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.05)'
-                }}>
+                <div className="testimonial-card-inner">
                   <div className="flex gap-1 mb-4 md:mb-8">
                     {[...Array(TESTIMONIALS[activeIndex].rating)].map((_, i) => (
                       <Star key={i} size={16} fill="var(--gold)" stroke="var(--gold)" />
@@ -158,7 +145,7 @@ export default function Testimonials() {
                     <p style={{
                       fontSize: 'clamp(15px, 4vw, 18px)',
                       lineHeight: '1.6',
-                      color: '#E8D5B0',
+                      color: 'var(--testimonial-quote-color, #E8D5B0)',
                       fontFamily: 'var(--FB)',
                       position: 'relative',
                       zIndex: 1
@@ -182,7 +169,7 @@ export default function Testimonials() {
                     </Avatar>
                     <div>
                       <h3 style={{ fontSize: '18px', fontWeight: 600, color: 'var(--gold)' }}>{TESTIMONIALS[activeIndex].author}</h3>
-                      <p style={{ fontSize: '14px', color: 'rgba(184, 175, 166, 0.7)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                      <p style={{ fontSize: '14px', color: 'var(--testimonial-role-color, rgba(184, 175, 166, 0.7))', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
                         {TESTIMONIALS[activeIndex].role}
                       </p>
                     </div>
